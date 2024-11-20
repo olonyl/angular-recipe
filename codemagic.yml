@@ -1,0 +1,18 @@
+workflows:
+  default-workflow:
+    name: Build and Test Angular App
+    environment:
+      node: 14.17.0 # Specify the Node.js version
+      vars:
+        CI: "true" # To ensure tools like Angular CLI recognize CI environment
+    scripts:
+      - name: Install dependencies
+        script: npm install
+      - name: Lint the code
+        script: npm run lint
+      - name: Run unit tests
+        script: npm test
+      - name: Build the Angular app
+        script: npm run build
+    artifacts:
+      - build/** # Archive the built files from the Angular `dist` folder
